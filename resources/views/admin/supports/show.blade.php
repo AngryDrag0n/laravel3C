@@ -5,7 +5,7 @@
     <li>idade: {{$support->idade}}</li>
     <li>Longitude: {{$support->longitude}}</li>
     <li>Latitude: {{$support->latitude}}</li>
-    <li>Inventário: {{$support->inventario}}</li>
+    <li>Inventário: {{$item->nome}}</li>
 
 </ul>
 

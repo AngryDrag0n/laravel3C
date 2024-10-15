@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Site;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdateItensRequest;
-use App\Models\Explorer;
 use App\Models\Item;
 use App\Models\Support;
 use Illuminate\Http\Request;
@@ -16,22 +15,22 @@ class ItensController extends Controller
     public function show($id)
     {
         $item = Item::find($id);
-        return view('site/itens/show', compact('item'));
+        return view('admin.itens.show', compact('item'));
     }
 
     public function create(Support $explorer)
     {
-        return view('site/itens/create', compact('explorer'));
+        return view('admin.itens.create', compact('explorer'));
     }
 
 
     public function store(StoreUpdateItensRequest $request, Support $explorer)
     {
         $data = $request->all();
-        $data['explorer_id'] = $explorer->id;
+        $data['support_id'] = $explorer->id;
         Item::create($data);
 
-        return redirect()->route('exploradores.index');
+        return redirect()->route('supports.index');
 
     }
 
@@ -54,6 +53,6 @@ class ItensController extends Controller
         $item->save();
         $explorer->save();
 
-        return redirect()->route('exploradores.index');
+        return redirect()->route('supports.index');
     }
 }
